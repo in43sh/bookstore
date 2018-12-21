@@ -1,0 +1,30 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(250, 250, 250);
+}
+
+.footer__inner-container {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__header {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.footer__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__links {
+  margin: 1rem;
+  text-decoration: none;
+  color: lightgray;
+}
