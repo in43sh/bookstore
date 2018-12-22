@@ -71,9 +71,38 @@ class Content extends Component {
     }
   }
 
+  modalDisplay(e) {
+    console.log(this.state.image)
+    var res ='https://books.google.com/books/content?id='+e+'&printsec=frontcover&img=1&zoom=3'
+    if(!this.state.image){
+      this.setState({
+        image: res
+      })
+    }else{
+      this.setState({
+        image: null
+      })
+    }
+  }
+
   render() {
     const listOfBooks_A_M = this.state.books_A_M.map(item => (
-      <div key={item.id} className="books-list__item">
+      <div key={item.id} className="books-list__item" onClick={()=> this.modalDisplay(item.id)}>
+        <div><img src={item.volumeInfo.imageLinks.smallThumbnail} alt="Book preview"/></div>
+        <span>{item.volumeInfo.title}</span>
+        <span>By {item.volumeInfo.authors}</span>
+      </div>
+    ))
+    const listOfBooks_N_Z = this.state.books_N_Z.map(item => (
+      <div key={item.id} className="books-list__item" onClick={()=> this.modalDisplay(item.id)}>
+        <div><img src={item.volumeInfo.imageLinks.smallThumbnail} alt="Book preview"/></div>
+        <span>{item.volumeInfo.title}</span>
+        <span>By {item.volumeInfo.authors}</span>
+      </div>
+    ))
+
+    const listOfBooks_others = this.state.books_others.map(item => (
+      <div key={item.id} className="books-list__item" onClick={()=> this.modalDisplay(item.id)}>
         <div><img src={item.volumeInfo.imageLinks.smallThumbnail} alt="Book preview"/></div>
         <span>{item.volumeInfo.title}</span>
         <span>By {item.volumeInfo.authors}</span>
@@ -82,11 +111,19 @@ class Content extends Component {
     return (
       <div className="content">
         <div className="content__inner-container">
+        {this.state.image && <div id="content__modal" onClick={() => this.modalDisplay('')} >
+            <img className="modal__img" src={ this.state.image} alt="empty"/>
+          </div>}
           <h1 className="content__header">Books</h1>
           <div className="books-list">
             <h2 className="books-list__header">Titles A-M</h2>
             {listOfBooks_A_M}
             <button className="btn books-list__show-more">SHOW MORE</button>
+            <h2 className="books-list__header">Titles N-Z</h2>
+            {listOfBooks_N_Z}
+            <button className="btn books-list__show-more">SHOW MORE</button>
+            <h2 className="books-list__header">Titles of others</h2>
+            {listOfBooks_others}
           </div>
         </div>
       </div>
