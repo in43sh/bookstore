@@ -12,3 +12,9 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+@media screen and (min-width: 480px) {
+  .nav__inner-container {
+    width: 80%;
+  }
+}

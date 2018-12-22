@@ -110,20 +110,20 @@ class Content extends Component {
     ))
     return (
       <div className="content">
-        <div className="content__inner-container">
-        {this.state.image && <div id="content__modal" onClick={() => this.modalDisplay('')} >
+      {this.state.image && <div id="content__modal" onClick={() => this.modalDisplay('')} >
             <img className="modal__img" src={ this.state.image} alt="empty"/>
           </div>}
+        <div className="content__inner-container">
           <h1 className="content__header">Books</h1>
           <div className="books-list">
             <h2 className="books-list__header">Titles A-M</h2>
-            {listOfBooks_A_M}
-            <button className="btn books-list__show-more">SHOW MORE</button>
+            <div className="books-list__list">{listOfBooks_A_M}</div>
+            <button className="btn btn-secondary books-list__show-more">SHOW MORE</button>
             <h2 className="books-list__header">Titles N-Z</h2>
-            {listOfBooks_N_Z}
-            <button className="btn books-list__show-more">SHOW MORE</button>
+            <div className="books-list__list">{listOfBooks_N_Z}</div>
+            <button className="btn btn-secondary books-list__show-more">SHOW MORE</button>
             <h2 className="books-list__header">Titles of others</h2>
-            {listOfBooks_others}
+            <div className="books-list__list">{listOfBooks_others}</div>
           </div>
         </div>
       </div>
